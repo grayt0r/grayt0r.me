@@ -27,5 +27,5 @@ app.configure 'production', ->
 app.get '/', (req, res) ->
   res.render 'index'
 
-app.listen 3000
+app.listen(process.env.PORT  or 3000)
 console.log "Express server listening on port #{app.address().port} in #{app.settings.env} mode"
