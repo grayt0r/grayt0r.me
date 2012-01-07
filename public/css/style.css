@@ -1,0 +1,15 @@
+body {
+  background: #2b2a29 url("/images/bg.jpg") repeat center top;
+}
+h2 {
+  color: #d53047;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 5em;
+  text-align: center;
+}
+.one {
+  margin-top: 2em;
+}
+.two {
+  margin-top: 1em;
+}

@@ -1,4 +1,6 @@
-express = require 'express' 
+express = require 'express'
+stylus = require 'stylus'
+nib = require 'nib'
 
 app = module.exports = express.createServer()
 
@@ -9,8 +11,11 @@ app.configure ->
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
-  app.use express.static("#{__dirname}/assets")
-  app.use require('connect-assets')()
+  app.use express.static("#{__dirname}/public")
+  app.use stylus.middleware({ src: "#{__dirname}/assets", dest: "#{__dirname}/public", compile: compileMethod })
+
+compileMethod = (str, path) ->
+  stylus(str).set('filename', path).set('compress', true).use(nib())
 
 app.configure 'development', ->
   app.use express.errorHandler({ dumpExceptions: true, showStack: true })
